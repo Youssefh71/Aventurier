@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f6cae649-fedc-41ce-b121-d085218fc22f" name="Changes" comment="Mise en place du Main">
       <change beforePath="$PROJECT_DIR$/src/com/aventurier/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aventurier/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/aventurier/impl/DefaultMapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aventurier/impl/DefaultMapController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -28,11 +28,6 @@ public class Main {
         } else {
             System.out.println("Erreur lors de la lecture du fichier de carte");
         }
-
-
-
-
-
     }
 
 }
