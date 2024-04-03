@@ -17,12 +17,12 @@ public class Main {
 
         if (mapContent != null) {
             // Premier test
-            System.out.println("Premier test :");
+            System.out.println("Premier test : Emplacement initiale du personnage");
             System.out.println("--------------------------------------------------------------------------------------------");
             TestRunner.runTest(mapController, mapContent, hero1, "SSSSEEEEEENN");
 
             // Deuxième test
-            System.out.println("\nDeuxième test :");
+            System.out.println("\nDeuxième test : Emplacement initiale du personnage");
             System.out.println("--------------------------------------------------------------------------------------------");
             TestRunner.runTest(mapController, mapContent, hero2, "OONOOOSSO");
         } else {

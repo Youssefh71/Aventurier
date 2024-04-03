@@ -107,7 +107,7 @@ public class DefaultMapController implements MapController {
         } else {
             // Afficher la carte avec le héros après le ou les déplacements
             System.out.println();
-            System.out.println("Résultat du test : ");
+            System.out.println("Résultat du test : Carte mise à jour avec déplacement du personnage ");
             System.out.println();
             printMapWithHero(map, player);
         }
