@@ -1,6 +1,6 @@
 package com.aventurier;
 
-import com.aventurier.impl.Player;
+import java.io.IOException;
 
 public interface MapController {
 
@@ -12,5 +12,8 @@ public interface MapController {
 
     // Méthode pour analyser le contenu de la carte et la transformer en une matrice de caractères
     char[][] parseMap(String mapContent);
+
+    // Méthode pour charger le contenu de la carte à partir d'un fichier
+    String loadMapContent(String filePath) throws IOException;
 
 }

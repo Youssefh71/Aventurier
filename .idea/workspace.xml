@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6cae649-fedc-41ce-b121-d085218fc22f" name="Changes" comment="Mise en place du Main">
+    <list default="true" id="f6cae649-fedc-41ce-b121-d085218fc22f" name="Changes" comment="modification du code &#10;-nouvelle classe position représenatnt les coordonnées du joueur&#10;-Amélioration du code et verififactiondes corddonées du joeur sont valides par rapport à la carte chargée.">
+      <change afterPath="$PROJECT_DIR$/src/com/aventurier/Direction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/aventurier/Position.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/aventurier/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aventurier/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/aventurier/MapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aventurier/MapController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/aventurier/Movement.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/aventurier/TestRunner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/aventurier/impl/DefaultMapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aventurier/impl/DefaultMapController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/aventurier/impl/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aventurier/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +30,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2e3E6BU8xGvbwTcJ3UQceHbVpO5" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -84,7 +94,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712137553891</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="modification gitignore">
+      <option name="closed" value="true" />
+      <created>1712139643716</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1712139643716</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,7 +119,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Nouveau projet Aventurier" />
     <MESSAGE value="Mise en place du Main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mise en place du Main" />
+    <MESSAGE value="modification gitignore" />
+    <MESSAGE value="modification du code &#10;-nouvelle classe position représenatnt les coordonnées du joueur&#10;-Amélioration du code et verififactiondes corddonées du joeur sont valides par rapport à la carte chargée." />
+    <option name="LAST_COMMIT_MESSAGE" value="modification du code &#10;-nouvelle classe position représenatnt les coordonnées du joueur&#10;-Amélioration du code et verififactiondes corddonées du joeur sont valides par rapport à la carte chargée." />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

@@ -1,22 +1,17 @@
 package com.aventurier.impl;
 
 import com.aventurier.MapController;
+import com.aventurier.Player;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class DefaultMapController implements MapController {
-
-
+    @Override
     // Méthode pour charger le contenu de la carte à partir d'un fichier
-    public String loadMapContent(String filePath) {
-        try {
-            return new String(Files.readAllBytes(Paths.get(filePath)));
-        } catch (IOException e) {
-            System.out.println("Erreur lors de la lecture du fichier de carte : " + e.getMessage());
-            return null; // En cas d'erreur, retourner null
-        }
+    public String loadMapContent(String filePath) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(filePath)));
     }
 
     @Override
@@ -27,24 +22,29 @@ public class DefaultMapController implements MapController {
             return;
         }
 
+
         char[][] mapWithHero = addHeroToMap(map, player);
         for (char[] row : mapWithHero) {
             System.out.println(row);
         }
 
         // Afficher les coordonnées du joueur en dessous de la carte
-        System.out.println("Position du joueur : (" + player.getX() + ", " + player.getY() + ")");
+        System.out.println("Position du joueur : (" + player.getPosition().getX() + ", " + player.getPosition().getY() + ")");
         System.out.println("--------------------------------------------------------------------------------------------");
     }
 
     private char[][] addHeroToMap(char[][] map, Player player) {
-        //Création d'une nouvelle matrice pour la carte avec les mêmes dimensions que la carte initiale
-        char[][] mapWithHero = new char[map.length][map[0].length];
-        for (int i = 0; i < map.length; i++) {
-            mapWithHero[i] = map[i].clone();
-        }
-        mapWithHero[player.getY()][player.getX()] = 'O';
+        char[][] mapWithHero = copyMap(map);
+        mapWithHero[player.getPosition().getY()][player.getPosition().getX()] = 'O';
         return mapWithHero;
+    }
+
+    private char[][] copyMap(char[][] map) {
+        char[][] copiedMap = new char[map.length][map[0].length];
+        for (int i = 0; i < map.length; i++) {
+            copiedMap[i] = map[i].clone();
+        }
+        return copiedMap;
     }
 
     @Override
@@ -58,6 +58,7 @@ public class DefaultMapController implements MapController {
 
         // Récupérer la largeur de la carte (nombre de colonnes dans la première ligne)
         int mapWidth = map[0].length;
+
         // Récupérer la hauteur de la carte (nombre de lignes)
         int mapHeight = map.length;
 
@@ -67,17 +68,18 @@ public class DefaultMapController implements MapController {
         // Indicateur pour vérifier si le message a déjà été affiché
         boolean obstacleMessageDisplayed = false;
 
+
         // Parcourir chaque instruction de déplacement
         for (char direction : instructions.toCharArray()) {
             // Sauvegarder les coordonnées actuelles du joueur
-            int currentX = player.getX();
-            int currentY = player.getY();
+            int currentX = player.getPosition().getX();
+            int currentY = player.getPosition().getY();
             // Déplacer le joueur dans la direction spécifiée par l'instruction
             player.move(direction);
 
             // Récupérer les nouvelles coordonnées du joueur après le déplacement
-            int newX = player.getX();
-            int newY = player.getY();
+            int newX = player.getPosition().getX();
+            int newY = player.getPosition().getY();
 
             // Vérifier si les nouvelles coordonnées sont dans les limites de la carte
             if (!isInBounds(newX, newY, mapWidth, mapHeight)) {
@@ -85,15 +87,17 @@ public class DefaultMapController implements MapController {
                     System.out.println("Déplacement impossible. Le héros est en dehors des limites de la carte. ☠️");
                     obstacleMessageDisplayed = true; // Mettre l'indicateur à true pour indiquer que le message a été affiché
                 }
-                player.setX(currentX);
-                player.setY(currentY);
+                // Réinitialiser la position du joueur aux coordonnées actuelles
+                player.getPosition().setX(currentX);
+                player.getPosition().setY(currentY);
             } else if (isObstacle(map, newX, newY)) { // Vérifier si les nouvelles coordonnées sont sur un obstacle
                 if (!obstacleMessageDisplayed) {
                     System.out.println("Déplacement impossible. Le héros est sur un obstacle. ☠️");
                     obstacleMessageDisplayed = true; // Mettre l'indicateur à true pour indiquer que le message a été affiché
                 }
-                player.setX(currentX);
-                player.setY(currentY);
+                // Réinitialiser la position du joueur aux coordonnées actuelles
+                player.getPosition().setX(currentX);
+                player.getPosition().setY(currentY);
             } else {
                 isPossible = true; // Un déplacement est possible
             }
@@ -125,18 +129,23 @@ public class DefaultMapController implements MapController {
 
     // Méthode pour analyser le contenu de la carte et la transformer en une matrice de caractères
     public char[][] parseMap(String mapContent) {
-        if (mapContent == null || mapContent.isEmpty()) {
-            return null; // Retourner null si le contenu de la carte est vide
+        try {
+            if (mapContent == null || mapContent.isEmpty()) {
+                throw new IllegalArgumentException("Le contenu de la carte est vide ou null.");
+            }
+            // Diviser le contenu de la carte en lignes en utilisant le saut de ligne comme séparateur
+            String[] lines = mapContent.split("\n");
+            // Créer une nouvelle matrice pour stocker la carte, où chaque ligne est un tableau de caractères
+            char[][] map = new char[lines.length][];
+            // Parcourir chaque ligne du contenu de la carte
+            for (int i = 0; i < lines.length; i++) {
+                // Convertir chaque ligne en un tableau de caractères et l'ajouter à la matrice de la carte
+                map[i] = lines[i].toCharArray();
+            }
+            return map;
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la conversion de la carte en une matrice de caractères : " + e.getMessage());
+            return null; // Retourner null en cas d'erreur
         }
-        // Diviser le contenu de la carte en lignes en utilisant le saut de ligne comme séparateur
-        String[] lines = mapContent.split("\n");
-        // Créer une nouvelle matrice pour stocker la carte, où chaque ligne est un tableau de caractères
-        char[][] map = new char[lines.length][];
-        // Parcourir chaque ligne du contenu de la carte
-        for (int i = 0; i < lines.length; i++) {
-            // Convertir chaque ligne en un tableau de caractères et l'ajouter à la matrice de la carte
-            map[i] = lines[i].toCharArray();
-        }
-        return map;
     }
 }
