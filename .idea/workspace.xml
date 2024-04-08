@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6cae649-fedc-41ce-b121-d085218fc22f" name="Changes" comment="Probleme d'afficge de la carte en cas de déplacement impossible">
-      <change beforePath="$PROJECT_DIR$/src/com/aventurier/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aventurier/Main.java" afterDir="false" />
+    <list default="true" id="f6cae649-fedc-41ce-b121-d085218fc22f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/aventurier/impl/DefaultMapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aventurier/impl/DefaultMapController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +95,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712139643716</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Probleme d'affichage de la carte en cas de déplacement impossible">
+      <option name="closed" value="true" />
+      <created>1712572890930</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712572890930</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -115,7 +123,8 @@
     <MESSAGE value="modification gitignore" />
     <MESSAGE value="modification du code &#10;-nouvelle classe position représenatnt les coordonnées du joueur&#10;-Amélioration du code et verififactiondes corddonées du joeur sont valides par rapport à la carte chargée." />
     <MESSAGE value="Probleme d'afficge de la carte en cas de déplacement impossible" />
-    <option name="LAST_COMMIT_MESSAGE" value="Probleme d'afficge de la carte en cas de déplacement impossible" />
+    <MESSAGE value="Probleme d'affichage de la carte en cas de déplacement impossible" />
+    <option name="LAST_COMMIT_MESSAGE" value="Probleme d'affichage de la carte en cas de déplacement impossible" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

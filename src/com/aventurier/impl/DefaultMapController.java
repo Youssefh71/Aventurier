@@ -8,6 +8,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class DefaultMapController implements MapController {
+
+    private static final char HERO_SYMBOL = 'O';
+    private static final char OBSTACLE_SYMBOL = '#';
+
+    private static final String ERROR_INVALID_MAP = "Erreur : carte invalide !";
+    private static final String ERROR_MOVE_OUT_OF_BOUNDS = "Déplacement impossible. Le héros est en dehors des limites de la carte. ☠️";
+    private static final String ERROR_MOVE_ON_OBSTACLE = "Déplacement impossible. Le héros est sur un obstacle. ☠️";
+    private static final String ERROR_NO_MOVEMENT_POSSIBLE = "Déplacement impossible. ☠️ ☠️ ☠️ ☠️ ☠️";
     @Override
     // Méthode pour charger le contenu de la carte à partir d'un fichier
     public String loadMapContent(String filePath) throws IOException {
@@ -18,7 +26,7 @@ public class DefaultMapController implements MapController {
     // Méthode pour afficher la carte avec le héros
     public void printMapWithHero(char[][] map, Player player) {
         if (map == null) {
-            System.out.println("Erreur : carte invalide !");
+            System.out.println(ERROR_INVALID_MAP);
             return;
         }
 
@@ -35,7 +43,7 @@ public class DefaultMapController implements MapController {
 
     private char[][] addHeroToMap(char[][] map, Player player) {
         char[][] mapWithHero = copyMap(map);
-        mapWithHero[player.getPosition().getY()][player.getPosition().getX()] = 'O';
+        mapWithHero[player.getPosition().getY()][player.getPosition().getX()] = HERO_SYMBOL;
         return mapWithHero;
     }
 
@@ -51,8 +59,8 @@ public class DefaultMapController implements MapController {
     // Méthode pour déplacer le héros selon les instructions données
     public void moveHero(Player player, String instructions, char[][] map) {
 
-        if (map == null) {
-            System.out.println("Erreur : carte invalide !");
+        if (!isValidMap(map)) {
+            System.out.println(ERROR_INVALID_MAP);
             return;
         }
 
@@ -79,13 +87,13 @@ public class DefaultMapController implements MapController {
 
             // Vérifier si les nouvelles coordonnées sont dans les limites de la carte
             if (!isInBounds(newX, newY, mapWidth, mapHeight)) {
-                System.out.println("Déplacement impossible. Le héros est en dehors des limites de la carte. ☠️");
+                System.out.println(ERROR_MOVE_OUT_OF_BOUNDS);
                 // Réinitialiser la position du joueur aux coordonnées actuelles
                 player.getPosition().setX(currentX);
                 player.getPosition().setY(currentY);
                 return; // Sortir de la méthode car le déplacement est impossible
             } else if (isObstacle(map, newX, newY)) { // Vérifier si les nouvelles coordonnées sont sur un obstacle
-                System.out.println("Déplacement impossible. Le héros est sur un obstacle. ☠️");
+                System.out.println(ERROR_MOVE_ON_OBSTACLE);
 
                 // Réinitialiser la position du joueur aux coordonnées actuelles
                 player.getPosition().setX(currentX);
@@ -100,7 +108,7 @@ public class DefaultMapController implements MapController {
         if (!isPossible) {
             System.out.println();
             System.out.println("-------------------------------------------------");
-            System.out.println("Déplacement impossible. ☠️ ☠️ ☠️ ☠️ ☠️");
+            System.out.println(ERROR_NO_MOVEMENT_POSSIBLE);
         } else {
             // Afficher la carte avec le héros après le ou les déplacements
             System.out.println();
@@ -110,6 +118,10 @@ public class DefaultMapController implements MapController {
         }
     }
 
+    private boolean isValidMap(char[][] map) {
+        return map != null && map.length > 0 && map[0].length > 0;
+    }
+
     // Méthode qui vérifie si les coordonnées (x, y) sont à l'intérieur des limites de la carte
     private boolean isInBounds(int x, int y, int mapWidth, int mapHeight) {
         return (x >= 0 && x < mapWidth && y >= 0 && y < mapHeight);
@@ -117,7 +129,7 @@ public class DefaultMapController implements MapController {
 
     // Méthode pour vérifier si une position est un obstacle sur la carte
     private boolean isObstacle(char[][] map, int x, int y) {
-        return (map[y][x] == '#');
+        return (map[y][x] == OBSTACLE_SYMBOL);
     }
 
     // Méthode pour analyser le contenu de la carte et la transformer en une matrice de caractères
