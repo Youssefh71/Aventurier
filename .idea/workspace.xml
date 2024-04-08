@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f6cae649-fedc-41ce-b121-d085218fc22f" name="Changes" comment="modification du code &#10;-nouvelle classe position représenatnt les coordonnées du joueur&#10;-Amélioration du code et verififactiondes corddonées du joeur sont valides par rapport à la carte chargée.">
-      <change afterPath="$PROJECT_DIR$/src/com/aventurier/Direction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/aventurier/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="f6cae649-fedc-41ce-b121-d085218fc22f" name="Changes" comment="Probleme d'afficge de la carte en cas de déplacement impossible">
       <change beforePath="$PROJECT_DIR$/src/com/aventurier/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aventurier/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/aventurier/MapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aventurier/MapController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/aventurier/Movement.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/aventurier/TestRunner.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/aventurier/impl/DefaultMapController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aventurier/impl/DefaultMapController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/aventurier/impl/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/aventurier/Player.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +114,8 @@
     <MESSAGE value="Mise en place du Main" />
     <MESSAGE value="modification gitignore" />
     <MESSAGE value="modification du code &#10;-nouvelle classe position représenatnt les coordonnées du joueur&#10;-Amélioration du code et verififactiondes corddonées du joeur sont valides par rapport à la carte chargée." />
-    <option name="LAST_COMMIT_MESSAGE" value="modification du code &#10;-nouvelle classe position représenatnt les coordonnées du joueur&#10;-Amélioration du code et verififactiondes corddonées du joeur sont valides par rapport à la carte chargée." />
+    <MESSAGE value="Probleme d'afficge de la carte en cas de déplacement impossible" />
+    <option name="LAST_COMMIT_MESSAGE" value="Probleme d'afficge de la carte en cas de déplacement impossible" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

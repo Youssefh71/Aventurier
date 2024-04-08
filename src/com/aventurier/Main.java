@@ -26,15 +26,16 @@ public class Main {
 
             char[][] map = mapController.parseMap(mapContent);
 
+            // Premier test
+            System.out.println("Premier test :");
+            System.out.println("--------------------------------------------------------------------------------------------");
+
             // Vérifier les coordonnées initiales du premier joueur
             if (hero1.validatePosition(map)) {
                 System.out.println("Les coordonnées initiales du premier joueur ne sont pas valides.");
                 return;
             }
 
-            // Premier test
-            System.out.println("Premier test :");
-            System.out.println("--------------------------------------------------------------------------------------------");
             // Charger la carte pour le premier test
             char[][] map1 = mapController.parseMap(mapContent);
             // Afficher la carte avec le héros initial pour le premier test
@@ -42,14 +43,17 @@ public class Main {
             // Déplacer le héros selon les instructions pour le premier test
             mapController.moveHero(hero1, "SSSSEEEEEENN", map1);
 
+
+            // Deuxième test
+            System.out.println("\nDeuxième test :");
+            System.out.println("--------------------------------------------------------------------------------------------");
+
             // Vérifier les coordonnées initiales du deuxième joueur
             if (hero2.validatePosition(map)) {
                 System.out.println("Les coordonnées initiales du deuxième joueur ne sont pas valides.");
                 return;
             }
-            // Deuxième test
-            System.out.println("\nDeuxième test :");
-            System.out.println("--------------------------------------------------------------------------------------------");
+
             // Charger la carte pour le deuxième test
             char[][] map2 = mapController.parseMap(mapContent);
             // Afficher la carte avec le héros initial pour le deuxième test

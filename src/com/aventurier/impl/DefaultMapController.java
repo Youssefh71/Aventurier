@@ -65,10 +65,6 @@ public class DefaultMapController implements MapController {
         // Indicateur pour vérifier si au moins un déplacement est possible
         boolean isPossible = false;
 
-        // Indicateur pour vérifier si le message a déjà été affiché
-        boolean obstacleMessageDisplayed = false;
-
-
         // Parcourir chaque instruction de déplacement
         for (char direction : instructions.toCharArray()) {
             // Sauvegarder les coordonnées actuelles du joueur
@@ -83,21 +79,18 @@ public class DefaultMapController implements MapController {
 
             // Vérifier si les nouvelles coordonnées sont dans les limites de la carte
             if (!isInBounds(newX, newY, mapWidth, mapHeight)) {
-                if (!obstacleMessageDisplayed) {
-                    System.out.println("Déplacement impossible. Le héros est en dehors des limites de la carte. ☠️");
-                    obstacleMessageDisplayed = true; // Mettre l'indicateur à true pour indiquer que le message a été affiché
-                }
+                System.out.println("Déplacement impossible. Le héros est en dehors des limites de la carte. ☠️");
                 // Réinitialiser la position du joueur aux coordonnées actuelles
                 player.getPosition().setX(currentX);
                 player.getPosition().setY(currentY);
+                return; // Sortir de la méthode car le déplacement est impossible
             } else if (isObstacle(map, newX, newY)) { // Vérifier si les nouvelles coordonnées sont sur un obstacle
-                if (!obstacleMessageDisplayed) {
-                    System.out.println("Déplacement impossible. Le héros est sur un obstacle. ☠️");
-                    obstacleMessageDisplayed = true; // Mettre l'indicateur à true pour indiquer que le message a été affiché
-                }
+                System.out.println("Déplacement impossible. Le héros est sur un obstacle. ☠️");
+
                 // Réinitialiser la position du joueur aux coordonnées actuelles
                 player.getPosition().setX(currentX);
                 player.getPosition().setY(currentY);
+                return; // Sortir de la méthode car le déplacement est impossible
             } else {
                 isPossible = true; // Un déplacement est possible
             }
